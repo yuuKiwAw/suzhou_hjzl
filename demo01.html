@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .divTitle{
+            background:#286FBC;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            font-size: 24px;
+            color: white;
+        }
+        .divSel{
+            width: 260px;
+            border: 1px solid gray;
+        }
+        .divSel2{
+            width: 320px;
+            border: 1px solid gray;
+        }
+        .left{
+            float: left;  
+        }
+        .left2{
+            float: left;
+        }
+    </style>
+
+    <title>苏州环境数据</title>
+</head>
+<body>
+    <div>
+        <div id="mainDivleft" class="left">
+            <div id="kqzlssbDiv" class="divSel">
+                <div class="divTitle"><strong>空气质量实时报</strong></div>
+                <iframe src="http://sthjj.suzhou.gov.cn//szhbj/kqzlssb/airss.shtml" width="100%" height="141" frameborder="0" scrolling="no" ></iframe>
+            </div>
+            
+            <div id="kqzlrbDiv" class="divSel" style="margin-top: 10px;">
+                <div class="divTitle"><strong>空气质量日报</strong></div>
+                <iframe src="http://sthjj.suzhou.gov.cn//szhbj/kqzlrb/airshow.shtml" width="100%" height="141" frameborder="0" scrolling="no" ></iframe>            
+            </div>                
+        </div>
+        
+        <div id="mainDivRight" class="left2">
+            <div id="kqzlybDiv" class="divSel2" style="margin-left: 5px;">
+                <div class="divTitle"><strong>空气质量预报</strong></div>
+                <iframe src="http://sthjj.suzhou.gov.cn//szhbj/xhtml/forcastshow.html" width="100%" height="338" frameborder="0" scrolling="no" ></iframe>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>
