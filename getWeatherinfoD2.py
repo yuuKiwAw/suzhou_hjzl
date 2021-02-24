@@ -4,6 +4,9 @@ import requests
 import json
 import pandas as pd
 import time
+from bs4 import BeautifulSoup
+from lxml import etree
+from lxml import html
 
 
 # Json数据取值
@@ -28,6 +31,7 @@ def getReq(url):
     }
     htmlReq = requests.get(url, headers=headers)
     Request_Status_Code = htmlReq.status_code  # 返回值为int类型
+    htmlReq.encoding = "utf-8"
     strVal = htmlReq.text
     if Request_Status_Code == 200:
         print("请求成功")
@@ -53,6 +57,12 @@ def main():
     NONGDU = getJsonVal(CityHourvalue, "nongdu")  # 浓度
     print("苏州市空气质量实时报：", getTime, airClass, airLevel, AQINUM, SYWRW, NONGDU)
     print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+
+    url_getCityDaily = "http://sthjj.suzhou.gov.cn//szhbj/kqzlrb/airshow.shtml"
+    CityDailyValue = getReq(url_getCityDaily)
+    CityDailyValueHtml = etree.HTML(CityDailyValue)
+    a = CityDailyValueHtml.xpath('//*[@id="airDiv1"]/div[2]/text()')[0]
+    print(a)
 
 
 if __name__ == '__main__':
