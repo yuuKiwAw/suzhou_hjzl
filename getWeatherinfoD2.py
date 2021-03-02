@@ -120,6 +120,20 @@ def RTCSweather():
         print("调用天气API出错")
 
 
+def RTCS7weather():
+    # 常熟7天的天气数据并保存到Json
+    url_api = "https://tianqiapi.com/api?version=v1&appid=57527268&appsecret=NnpIc7MS&city=常熟"
+    responsejsonVal = requests.get(url_api)
+    if(responsejsonVal.status_code == 200):
+        jsonresult = responsejsonVal.text
+        json1 = json.loads(jsonresult)
+        with open('./json/7days.json', 'w', encoding='utf-8')as fp:
+            json.dump(json1, fp, ensure_ascii=False)
+            print("已生成并导出Json文件")
+    else:
+        print("调用7天天气API出错")
+
+
 # 主函数
 def main():
     print("执行时间：" + str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')))  # 本机当前时间
@@ -132,6 +146,7 @@ def main():
     print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
     NEWDICTTOFILE = saveToFile.DICTTOFILE('./csv/data.csv', SZHJJinfo(), CSRBinfo(), RTCSweather())  # 实例化一个新的类
     NEWDICTTOFILE.dict_to_csv()  # 调用类中的函数转换为csv
+    RTCS7weather()  # 未来七天天气指数导出到Json
 
 
 if __name__ == '__main__':
