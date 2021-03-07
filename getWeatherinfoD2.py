@@ -144,8 +144,11 @@ def main():
     print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>常熟实时天气预报>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
     print(RTCSweather())  # 常熟实时天气预报
     print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
-    NEWDICTTOFILE = saveToFile.DICTTOFILE('./csv/data.csv', SZHJJinfo(), CSRBinfo(), RTCSweather())  # 实例化一个新的类
-    NEWDICTTOFILE.dict_to_csv()  # 调用类中的函数转换为csv
+    NEWDICTTOCSV = saveToFile.DICTTOFILE('./csv/data.csv', SZHJJinfo(), CSRBinfo(), RTCSweather())  # 实例化一个新的类CSV
+    NEWDICTTOJSON = saveToFile.DICTTOFILE('./json/weatherINFO.json', SZHJJinfo(), CSRBinfo(), RTCSweather())
+    NEWDICTTOCSV.dict_to_csv()  # 调用类中的函数转换为csv
+    NEWDICTTOJSON.dict_to_json()  # 调用类中的函数转换为json
+
     RTCS7weather()  # 未来七天天气指数导出到Json
 
 

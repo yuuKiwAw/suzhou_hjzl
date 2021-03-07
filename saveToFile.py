@@ -8,6 +8,7 @@ FilePath     : \\suzhou_hjzl\\saveToCSV.py
 # python 3.8
 # coding=utf-8
 import pandas as pd
+import json
 
 
 class DICTTOFILE:
@@ -35,3 +36,12 @@ class DICTTOFILE:
         allDict.update(self.CSKQZL)
         allDict.update(self.CSTQ)
         pd.DataFrame(allDict, index=[0]).to_csv(self.path, encoding='utf-8_sig')
+
+    def dict_to_json(self):
+        allDict = {}
+        allDict.update(self.SZKQZL)
+        allDict.update(self.CSKQZL)
+        allDict.update(self.CSTQ)
+        jsonStr = json.dumps(allDict, ensure_ascii=False)
+        with open(self.path, 'w', encoding='utf-8') as f:
+            f.write(jsonStr)
